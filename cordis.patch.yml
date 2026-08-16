@@ -1,0 +1,20 @@
+# 明眸 VisionBridge —— 自研视觉桥 bundle 补丁
+- insert:
+    - id: vision-bridge
+      name: dsh-vision-bridge
+      config:
+        enabled: !!js process.env.DSH_VISION_ENABLED !== 'false'
+        providers: !!js >-
+          (process.env.DSH_VISION_PROVIDERS ?? '').split(',').map(s =>
+          s.trim()).filter(Boolean)
+        strategy: !!js process.env.DSH_VISION_STRATEGY ?? 'cascade'
+        visionBaseURL: !!js process.env.DSH_VISION_BASE_URL ?? 'https://api.siliconflow.cn/v1'
+        visionModel: !!js process.env.DSH_VISION_MODEL ?? 'Qwen/Qwen3-VL-8B-Instruct'
+        visionModelUpgrade: !!js process.env.DSH_VISION_MODEL_UPGRADE ?? 'Qwen/Qwen3-VL-32B-Instruct'
+        apiKeyEnv: !!js process.env.DSH_VISION_API_KEY_ENV ?? 'SILICONFLOW_API_KEY'
+        failureMode: !!js process.env.DSH_VISION_FAILURE_MODE ?? 'annotate'
+        maxTokens: !!js Number(process.env.DSH_VISION_MAX_TOKENS ?? 4096)
+        timeoutMs: !!js Number(process.env.DSH_VISION_TIMEOUT_MS ?? 180000)
+        prompt: !!js >-
+          process.env.DSH_VISION_PROMPT ?? '请识别并描述这张图片：完整转录所有文字、界面布局、数据与视觉关系。'
+            + '只输出识别结果本身，不要回答用户问题，不要输出思考过程。'

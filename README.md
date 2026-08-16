@@ -7,7 +7,7 @@
 ## 特性
 
 - **按模型能力触发**：只有真实不支持图片的模型才走桥接；真视觉模型（如 SiliconFlow Qwen3-VL）原生直连看图。
-- **双策略**：`cascade` 自适应级联（快模型先上，空结果/失败自动升级大模型）/ `race` 并发赛跑（首个非空胜出）。
+- **自动升级（默认）**：先用首选识别模型，失败或结果为空时自动切换备选模型；高级用户可用 `DSH_VISION_STRATEGY=race` 开启并发赛跑。
 - **设置页可视化配置（client 半）**：注册 `vision-bridge` 设置命名空间 + 浏览器端设置卡片，在 dsh Web 的「设置 → 插件」里直接改提供商、模型、策略，保存即时生效（applies: live）。
 - **失败不静默**：`annotate`（失败原因作为文字喂给主模型）/ `error`（严格报错）。
 - **凭据安全**：API Key 走 dsh 官方凭据服务，不落盘到配置。
@@ -35,10 +35,10 @@ dsh plugin --profile headless add link:C:/路径/到/dsh-vision-bridge   # 可�
 |---|---|---|
 | `DSH_VISION_ENABLED` | `true` | 总开关 |
 | `DSH_VISION_PROVIDERS` | 空（全部） | 生效的主模型 provider 列表，逗号分隔 |
-| `DSH_VISION_STRATEGY` | `cascade` | `cascade` / `race` |
+| `DSH_VISION_STRATEGY` | `cascade` | `cascade`（自动升级，默认）/ `race`（并发赛跑，高级） |
 | `DSH_VISION_BASE_URL` | `https://api.siliconflow.cn/v1` | 视觉 API 端点 |
 | `DSH_VISION_MODEL` | `Qwen/Qwen3-VL-8B-Instruct` | 首选识别模型 |
-| `DSH_VISION_MODEL_UPGRADE` | `Qwen/Qwen3-VL-32B-Instruct` | 升级/赛跑模型 |
+| `DSH_VISION_MODEL_UPGRADE` | `Qwen/Qwen3-VL-32B-Instruct` | 备选识别模型（首选失败/为空时自动切换） |
 | `DSH_VISION_API_KEY_ENV` | `SILICONFLOW_API_KEY` | API Key 环境变量引用 |
 | `DSH_VISION_FAILURE_MODE` | `annotate` | `annotate` / `error` |
 | `DSH_VISION_MAX_TOKENS` | `4096` | 识别最大 token |

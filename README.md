@@ -46,11 +46,20 @@ dsh plugin --profile headless add link:C:/路径/到/dsh-vision-bridge   # 可�
 | `DSH_VISION_PROMPT` | 见源码 | 识别提示词 |
 | `DSH_VISION_DEBUG` | 关 | `1` 开启调试日志 |
 
-API Key 写入 `~/.dsh/.credentials.yaml`：
+### 方式三：API Key（二选一）
+
+- **推荐：设置卡片直接粘贴** —— 设置 → 插件 → 明眸 VisionBridge，在「视觉 API Key」框粘贴 Key 并点「保存 Key」，写入 dsh 官方凭据库（不落盘到配置），卡片实时显示「已配置 ✓」。
+- 或手动写入 `~/.dsh/.credentials.yaml`：
 
 ```yaml
 SILICONFLOW_API_KEY: sk-xxx
 ```
+
+### 错误处理
+
+- 空识别结果 → 自动切换备选模型重试；
+- Key 缺失/无效（401/403）、限流（429）、服务异常（5xx）、超时、空结果 → 以中文可读的提示标注给主模型（`annotate` 模式），绝不静默丢图；
+- 可切 `error` 模式严格报错。
 
 ## 工作原理
 

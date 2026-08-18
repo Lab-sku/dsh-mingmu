@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/spec/v2.0.0.html).
 
+
+## [0.1.2] - 2026-08-18
+
+### Added
+- README 增加 GitHub badges（版本、License、仓库大小），提升可发现性。
+- 为 GitHub 仓库添加 topics：deepseek-harness、dsh-plugin、ision-model、lm、multimodal、i-plugin 等。
+
+### Changed
+- 无功能变更。
+
 ## [0.1.1] - 2026-08-17
 
 ### Added

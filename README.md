@@ -1,4 +1,4 @@
-# 明眸 VisionBridge（dsh-vision-bridge）
+# 明眸 Mingmu（dsh-mingmu）
 
 [English](#english-intro) | 中文
 
@@ -8,7 +8,7 @@
 
 ## English Intro
 
-**Mingmu VisionBridge** is a dsh plugin that gives text-only models the ability to "see". When you attach an image, it automatically calls a vision-capable model to describe the image and feeds the result back to the main model as text. Vision-native models are left untouched. Configuration is done through the dsh Web UI or environment variables.
+**Mingmu** is a dsh plugin that gives text-only models the ability to "see". When you attach an image, it automatically calls a vision-capable model to describe the image and feeds the result back to the main model as text. Vision-native models are left untouched. Configuration is done through the dsh Web UI or environment variables.
 
 ## ⚠️ Privacy / Data Notice
 
@@ -32,9 +32,9 @@ By default, images are sent to a third-party vision API endpoint (`https://api.s
 
 ## 界面预览
 
-安装后，在 dsh Web 的「设置 → 明眸 VisionBridge」中可视化配置：
+安装后，在 dsh Web 的「设置 → 明眸 Mingmu」中可视化配置：
 
-![明眸 VisionBridge 设置页](assets/dsh-vision-settings.png)
+![明眸 Mingmu 设置页](assets/dsh-vision-settings.png)
 
 插件已正确注册到 dsh 设置侧边栏：
 
@@ -46,16 +46,16 @@ By default, images are sent to a third-party vision API endpoint (`https://api.s
 
 ```bash
 # web  profile
-dsh plugin --profile web add github:Lab-sku/dsh-vision-bridge
+dsh plugin --profile web add github:Lab-sku/dsh-mingmu
 # headless profile（可选）
-dsh plugin --profile headless add github:Lab-sku/dsh-vision-bridge
+dsh plugin --profile headless add github:Lab-sku/dsh-mingmu
 ```
 
 首次从 git 安装时，pnpm 可能要求你在 `~/.dsh/profiles/<name>/pnpm-workspace.yaml` 中授权构建：
 
 ```yaml
 allowBuilds:
-  dsh-vision-bridge: true
+  dsh-mingmu: true
 ```
 
 因为本插件是原生 JS，无需 `prepare` 构建脚本；`lib/` 目录已包含在仓库中。
@@ -63,13 +63,13 @@ allowBuilds:
 ### 从 npm 安装
 
 ```bash
-dsh plugin --profile web add dsh-vision-bridge
+dsh plugin --profile web add dsh-mingmu
 ```
 
 ### 本地 link 安装（开发调试）
 
 ```bash
-dsh plugin --profile web add link:/path/to/dsh-vision-bridge
+dsh plugin --profile web add link:/path/to/dsh-mingmu
 ```
 
 重启 `dsh web` 生效：
@@ -81,14 +81,14 @@ dsh web
 ## 卸载
 
 ```bash
-dsh plugin --profile web remove dsh-vision-bridge
+dsh plugin --profile web remove dsh-mingmu
 ```
 
 ## 配置
 
 ### 方式一：Web 设置页（推荐）
 
-打开 **设置 → 插件 → 明眸 VisionBridge（视觉桥）**，改完点保存，即时生效。
+打开 **设置 → 插件 → 明眸 Mingmu（视觉桥）**，改完点保存，即时生效。
 
 rc.6 的「设置 → 模型」页会同时出现一张由可配置提供方注册产生的同名占位卡，浏览器半已自动隐藏，属正常现象。
 
@@ -126,7 +126,7 @@ rc.6 的「设置 → 模型」页会同时出现一张由可配置提供方注�
 
 ### 方式三：API Key（二选一）
 
-- **推荐：设置卡片直接粘贴** —— 设置 → 插件 → 明眸 VisionBridge，在「视觉 API Key」框粘贴 Key 并点「保存 Key」，写入 dsh 官方凭据库（不落盘到配置），卡片实时显示「已配置 ✓」。
+- **推荐：设置卡片直接粘贴** —— 设置 → 插件 → 明眸 Mingmu，在「视觉 API Key」框粘贴 Key 并点「保存 Key」，写入 dsh 官方凭据库（不落盘到配置），卡片实时显示「已配置 ✓」。
 
 - 或手动写入 `~/.dsh/.credentials.yaml`：
 
@@ -161,7 +161,7 @@ vision-bridge:
 
 ```mermaid
 flowchart TD
-    A[用户上传图片] --> B{dsh-vision-bridge<br/>判断当前模型是否支持视觉}
+    A[用户上传图片] --> B{dsh-mingmu<br/>判断当前模型是否支持视觉}
     B -->|支持| C[原生视觉模型<br/>直接看图回答]
     B -->|不支持| D[调用 Qwen-VL 等视觉模型识别]
     D --> E[把识别文字喂回主模型]

@@ -34,7 +34,7 @@
 ```yaml
 - insert:
     - id: vision-bridge
-      name: dsh-vision-bridge
+      name: dsh-mingmu
       config:
         enabled: !!js process.env.DSH_VISION_ENABLED !== 'false'
         ...
@@ -42,7 +42,7 @@
 
 `@deepseek-ai/cordis-plugin-loader` 拿到这个 entry 后：
 
-1. `import('dsh-vision-bridge')` 加载模块（`lib/index.mjs`）。
+1. `import('dsh-mingmu')` 加载模块（`lib/index.mjs`）。
 2. 校验 `inject: ['attachments', 'llm', 'credentials', 'settings']`，确保这些服务先存在。
 3. 调用 `ctx.registry.plugin(plugin, config)`，即执行插件导出的 `apply(ctx, pluginConfig)`。
 4. `apply` 返回的 dispose 函数被 cordis 托管；插件被卸载/停用时自动还原所有副作用。

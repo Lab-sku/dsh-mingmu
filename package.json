@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lab-sku/dsh-mingmu.git"
+    "url": "git+https://github.com/Lab-sku/dsh-mingmu.git"
   },
   "bugs": {
     "url": "https://github.com/Lab-sku/dsh-mingmu/issues"

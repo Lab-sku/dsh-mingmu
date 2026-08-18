@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/spec/v2.0.0.html).
 
 
+
+## [0.1.3] - 2026-08-18
+
+### Added
+- README 增加真实界面截图：dsh Web 设置页与侧边栏入口。
+- README 增加 Mermaid 分流流程图。
+- 新增 ssets/ 目录存放截图。
+- 文档补充 dsh 插件生态与发现渠道（awesome-dsh-plugin、dsh-market）。
+
+### Changed
+- 无功能变更。
+
 ## [0.1.2] - 2026-08-18
 
 ### Added

@@ -15,6 +15,9 @@
         failureMode: !!js process.env.DSH_VISION_FAILURE_MODE ?? 'annotate'
         maxTokens: !!js Number(process.env.DSH_VISION_MAX_TOKENS ?? 4096)
         timeoutMs: !!js Number(process.env.DSH_VISION_TIMEOUT_MS ?? 180000)
+        visionModels: !!js >-
+          (process.env.DSH_VISION_VISION_MODELS ?? '').split(',').map(s =>
+          s.trim()).filter(Boolean)
         prompt: !!js >-
           process.env.DSH_VISION_PROMPT ?? '请识别并描述这张图片：完整转录所有文字、界面布局、数据与视觉关系。'
             + '只输出识别结果本身，不要回答用户问题，不要输出思考过程。'

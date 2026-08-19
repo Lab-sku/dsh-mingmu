@@ -1,3 +1,7 @@
+## [0.1.3] - 2026-08-19
+
+### Fixed
+- 修复 `cordis.patch.yml` 中 bundle 入口仍指向旧包名 `dsh-vision-bridge` 的问题，改名为 `dsh-mingmu`，避免卸载旧包后 `dsh web` 启动报 `ERR_MODULE_NOT_FOUND`。
 ## [0.1.2] - 2026-08-19
 
 ### Changed
@@ -50,5 +54,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/
 - 修复 `AbortSignal.any` 在 Node 18 下的兼容性。
 - 修复设置页 `useSyncExternalStore` pending snapshot 不稳定导致的无限重渲染。
 - 统一 `package.json` 与 `README.md` 的 Node.js 版本声明为 `>=22.19.0`（跟随 dsh 最低版本）。
+
 
 

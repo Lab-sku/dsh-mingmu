@@ -1,7 +1,7 @@
 # 明眸 VisionBridge —— 自研视觉桥 bundle 补丁
 - insert:
     - id: vision-bridge
-      name: dsh-vision-bridge
+      name: dsh-mingmu
       config:
         enabled: !!js process.env.DSH_VISION_ENABLED !== 'false'
         providers: !!js >-
@@ -21,3 +21,4 @@
         prompt: !!js >-
           process.env.DSH_VISION_PROMPT ?? '请识别并描述这张图片：完整转录所有文字、界面布局、数据与视觉关系。'
             + '只输出识别结果本身，不要回答用户问题，不要输出思考过程。'
+

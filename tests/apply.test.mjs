@@ -110,7 +110,7 @@ describe('apply integration', () => {
 
   it('skips bridge when model supports vision', async () => {
     const { ctx } = await runPlugin({}, ['test/vision'])
-    const decision = await invokePreStep(ctx, makeAgent('test', 'vision'), [makeImageMessage()])
+    const decision = await invokePreStep(ctx, makeAgent('test', 'gpt-4o'), [makeImageMessage()])
     assert.equal(decision.kind, 'enter')
     assert.equal(decision.messages[0].content[0].type, 'image')
   })
@@ -136,4 +136,5 @@ describe('apply integration', () => {
     assert.equal(decision.messages[0].content[0].type, 'image')
   })
 })
+
 

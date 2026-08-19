@@ -91,11 +91,11 @@ async function invokePreStep(ctx, agent, messages) {
 
 describe('multi-agent concurrency', () => {
   it('does not confuse state between a blind agent and a vision agent', async () => {
-    const ctx = createMockContext({ visionModels: ['test/vision'] })
+    const ctx = createMockContext({ visionModels: ['test/gpt-4o'] })
     await apply(ctx, {})
 
     // Agent A: vision model -> should NOT bridge
-    const decisionA = await invokePreStep(ctx, makeAgent('test', 'vision'), [makeImageMessage()])
+    const decisionA = await invokePreStep(ctx, makeAgent('test', 'gpt-4o'), [makeImageMessage()])
     assert.equal(decisionA.messages[0].content[0].type, 'image')
 
     // Agent B: blind model -> should bridge
@@ -104,9 +104,10 @@ describe('multi-agent concurrency', () => {
     assert.match(decisionB.messages[0].content[0].text, /[图]/)
 
     // Agent C: vision model again -> should still NOT bridge
-    const decisionC = await invokePreStep(ctx, makeAgent('test', 'vision'), [makeImageMessage()])
+    const decisionC = await invokePreStep(ctx, makeAgent('test', 'gpt-4o'), [makeImageMessage()])
     assert.equal(decisionC.messages[0].content[0].type, 'image')
   })
 })
+
 
 

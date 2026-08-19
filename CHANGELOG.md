@@ -1,3 +1,7 @@
+## [0.1.5] - 2026-08-19
+
+### Fixed
+- 修复 `pre-step` 视觉/瞎子分流判断被 `adapter patch` 污染的问题：由于 adapter 层需要给所有模型追加 `image` input 来避免 `UNSUPPORTED_CONTENT`，`resolveModelInfo` 返回的 `inputModalities` 也被带上了 `image`，导致 DeepSeek 被误判为视觉模型。现在改为以启发式模型识别 + 用户白名单为准，不再单独信任被污染的 `inputModalities`。
 ## [0.1.4] - 2026-08-19
 
 ### Fixed
@@ -59,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/
 - 修复 `AbortSignal.any` 在 Node 18 下的兼容性。
 - 修复设置页 `useSyncExternalStore` pending snapshot 不稳定导致的无限重渲染。
 - 统一 `package.json` 与 `README.md` 的 Node.js 版本声明为 `>=22.19.0`（跟随 dsh 最低版本）。
+
 
 
 

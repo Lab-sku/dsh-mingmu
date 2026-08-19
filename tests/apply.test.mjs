@@ -105,7 +105,7 @@ describe('apply integration', () => {
     const decision = await invokePreStep(ctx, makeAgent('test', 'blind'), [makeImageMessage()])
     assert.equal(decision.kind, 'enter')
     const text = decision.messages[0].content[0].text
-    assert.match(text, /系统视觉桥接/)
+    assert.match(text, /\[图\]/)
   })
 
   it('skips bridge when model supports vision', async () => {
@@ -136,3 +136,4 @@ describe('apply integration', () => {
     assert.equal(decision.messages[0].content[0].type, 'image')
   })
 })
+

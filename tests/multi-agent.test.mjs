@@ -101,10 +101,12 @@ describe('multi-agent concurrency', () => {
     // Agent B: blind model -> should bridge
     const decisionB = await invokePreStep(ctx, makeAgent('test', 'blind'), [makeImageMessage()])
     assert.equal(decisionB.messages[0].content[0].type, 'text')
-    assert.match(decisionB.messages[0].content[0].text, /系统视觉桥接/)
+    assert.match(decisionB.messages[0].content[0].text, /[图]/)
 
     // Agent C: vision model again -> should still NOT bridge
     const decisionC = await invokePreStep(ctx, makeAgent('test', 'vision'), [makeImageMessage()])
     assert.equal(decisionC.messages[0].content[0].type, 'image')
   })
 })
+
+

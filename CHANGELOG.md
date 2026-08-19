@@ -1,3 +1,11 @@
+## [0.1.2] - 2026-08-19
+
+### Changed
+- 桥接输出默认从生硬的 `[系统视觉桥接] ... <visual-content>` 改为更自然的 `[图] 内容` 形式，真正接近“无感桥接”。
+- 新增 `resultPrefix` 配置项：可自定义前缀（如 `图片`、`Pic`），留空则完全无感。
+
+### Fixed
+- 修复默认包装出现双重方括号 `[[图]]` 的问题。
 ## [0.1.1] - 2026-08-19
 
 ### Fixed
@@ -42,4 +50,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/
 - 修复 `AbortSignal.any` 在 Node 18 下的兼容性。
 - 修复设置页 `useSyncExternalStore` pending snapshot 不稳定导致的无限重渲染。
 - 统一 `package.json` 与 `README.md` 的 Node.js 版本声明为 `>=22.19.0`（跟随 dsh 最低版本）。
+
 

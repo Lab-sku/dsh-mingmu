@@ -97,7 +97,7 @@ describe('user model setup', () => {
     await apply(ctx, {})
     const decision = await invokePreStep(ctx, makeAgent('deepseek-official', 'deepseek-v4-flash'), [makeImageMessage()])
     assert.equal(decision.messages[0].content[0].type, 'text')
-    assert.match(decision.messages[0].content[0].text, /系统视觉桥接/)
+    assert.match(decision.messages[0].content[0].text, /\[图\]/)
   })
 
   // QuchiAI 中的 DeepSeek-V4-Flash 也是瞎子模型
@@ -106,7 +106,7 @@ describe('user model setup', () => {
     await apply(ctx, {})
     const decision = await invokePreStep(ctx, makeAgent('quchiai', 'deepseek-ai/DeepSeek-V4-Flash'), [makeImageMessage()])
     assert.equal(decision.messages[0].content[0].type, 'text')
-    assert.match(decision.messages[0].content[0].text, /系统视觉桥接/)
+    assert.match(decision.messages[0].content[0].text, /\[图\]/)
   })
 
   // QuchiAI 中的 MiniMax-M3 被 dsh 错误标为 text-only，通过 visionModels 白名单强制视为视觉模型
@@ -187,3 +187,4 @@ describe('admission bridge', () => {
     assert.ok(!info.inputModalities.includes('image'))
   })
 })
+

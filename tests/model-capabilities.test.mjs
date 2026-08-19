@@ -47,7 +47,7 @@ describe('guessVisionModel heuristic', () => {
     ['deepseek-ai/DeepSeek-V3', false],
     ['ZhipuAI/GLM-5.2', false],
     ['ZhipuAI/GLM-5.2-FP8', false],
-    ['Qwen/Qwen3.6-27B', true],
+    ['Qwen/Qwen3.6-27B', false],
     ['Qwen/Qwen-Turbo', false],
   ]
 

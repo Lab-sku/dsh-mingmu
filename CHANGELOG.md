@@ -1,3 +1,10 @@
+## [0.1.1] - 2026-08-19
+
+### Fixed
+- 修复底层 adapter (dsh-llm-pi-ai) 仍对瞎子模型报 `UNSUPPORTED_CONTENT` 的问题：现在统一为所有模型追加 `image` input，真正的视觉/瞎子分流仍由 pre-step 根据真实 `inputModalities` 决定。
+- 修复 adapter 懒加载导致 patch 未生效的问题：启动后 30 秒内每 5 秒重新扫描一次 adapter。
+- 修复 Kimi-K3 等模型被误判为瞎子模型的问题，新增 `kimi.*vision`、`kimi.*vl` 兜底规则。
+- 修复 Qwen3.x 非 VL 模型被误判为视觉模型的问题（移除 `qwen3.[5-9]` 过于宽泛的规则）。
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -35,3 +42,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/
 - 修复 `AbortSignal.any` 在 Node 18 下的兼容性。
 - 修复设置页 `useSyncExternalStore` pending snapshot 不稳定导致的无限重渲染。
 - 统一 `package.json` 与 `README.md` 的 Node.js 版本声明为 `>=22.19.0`（跟随 dsh 最低版本）。
+

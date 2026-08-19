@@ -1,3 +1,8 @@
+## [0.1.4] - 2026-08-19
+
+### Fixed
+- 修复客户端 bundle 注册 ID 仍为 `dsh-vision-bridge` 的问题，统一改为 `dsh-mingmu`，解决 `Failed to load plugins` 错误。
+- 修复服务端插件名 `name` 仍为 `dsh-vision-bridge` 的问题，统一改为 `dsh-mingmu`。
 ## [0.1.3] - 2026-08-19
 
 ### Fixed
@@ -54,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/lang/zh-CN/
 - 修复 `AbortSignal.any` 在 Node 18 下的兼容性。
 - 修复设置页 `useSyncExternalStore` pending snapshot 不稳定导致的无限重渲染。
 - 统一 `package.json` 与 `README.md` 的 Node.js 版本声明为 `>=22.19.0`（跟随 dsh 最低版本）。
+
 
 
 
